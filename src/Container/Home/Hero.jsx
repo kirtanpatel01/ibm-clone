@@ -3,20 +3,18 @@ import { hero } from "../../assets";
 import { CTAButton, NewsCompo } from "../../components";
 
 function Hero() {
+  const [underline, setUnderline] = useState(false);
+  const [index, setIndex] = useState(1);
+  const [selected, setSelected] = useState(1);
 
-    const [ underline, setUnderline ] = useState(false);
-    const [ index, setIndex] = useState(1);
-    const [ selected, setSelected ] = useState(1);
+  const handleMouseEnter = (index) => {
+    setUnderline(true);
+    setIndex(index);
+  };
 
-    const handleMouseEnter = (index) => {
-        setUnderline(true)
-        setIndex(index)
-    }
-
-    const handleMouseLeave = () => {
-        setUnderline(false)
-        // setIndex(index)
-    }
+  const handleMouseLeave = () => {
+    setUnderline(false);
+  };
 
   const newsList = [
     {
@@ -56,22 +54,31 @@ function Hero() {
           </div>
         </div>
       </div>
-      <img src={hero} alt="hero" className="h-fit xl:max-w-2xl lg:max-w-lg w-full" />
+      <img
+        src={hero}
+        alt="hero"
+        className="h-fit xl:max-w-2xl lg:max-w-lg w-full"
+      />
       <div className="h-fit flex flex-col gap-">
         <span className="font-semibold">Latest News</span>
         <div>
-          <NewsCompo text={newsList[selected-1][1]} />
-          <NewsCompo text={newsList[selected-1][2]} />
+          <NewsCompo text={newsList[selected - 1][1]} />
+          <NewsCompo text={newsList[selected - 1][2]} />
         </div>
         <ul className="flex gap-4 px-2">
           {nums.map((i) => (
-            <li 
-            onClick={() => setSelected(i)}
-            onMouseEnter={() => handleMouseEnter(i)}
-            onMouseLeave={() => handleMouseLeave()}
-            className="text-primaryHvr text-center text-xs font-semibold cursor-pointer hover:">
-                <span>{i}</span>
-                <div className={`w-4 h-1 ${selected === i ? 'bg-primary' : ''} ${underline ? index === i ? 'bg-primary' : '' : '' } rounded`}></div>
+            <li
+              onClick={() => setSelected(i)}
+              onMouseEnter={() => handleMouseEnter(i)}
+              onMouseLeave={() => handleMouseLeave()}
+              className="text-primaryHvr text-center text-xs font-semibold cursor-pointer hover:"
+            >
+              <span>{i}</span>
+              <div
+                className={`w-4 h-1 ${selected === i ? "bg-primary" : ""} ${
+                  underline ? (index === i ? "bg-primary" : "") : ""
+                } rounded`}
+              ></div>
             </li>
           ))}
         </ul>

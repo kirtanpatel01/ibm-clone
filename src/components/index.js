@@ -7,5 +7,6 @@ import SupportsNav from './SupportsNav';
 import Layout from './Layout';
 import CTAButton from './CTAButton';
 import NewsCompo from './NewsCompo';
+import RecommendBox from './RecommendBox';
 
-export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout, CTAButton, NewsCompo };
+export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout, CTAButton, NewsCompo, RecommendBox };
