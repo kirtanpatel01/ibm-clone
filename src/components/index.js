@@ -5,5 +5,7 @@ import ProductsNav from './ProductsNav';
 import SolutionsNav from './SolutionsNav';
 import SupportsNav from './SupportsNav';
 import Layout from './Layout';
+import CTAButton from './CTAButton';
+import NewsCompo from './NewsCompo';
 
-export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout };
+export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout, CTAButton, NewsCompo };
