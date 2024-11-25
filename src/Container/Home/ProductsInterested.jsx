@@ -24,7 +24,7 @@ function ProductsInterested() {
   ];
 
   return (
-    <div className='mx-4 2xl:mx-0 py-8'>
+    <div className='mx-4 sm:mx-8 2xl:mx-0 py-8'>
       <h2 className="text-3xl font mb-8">Products you may be interested in</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {list.map((item) => (
