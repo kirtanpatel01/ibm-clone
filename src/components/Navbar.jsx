@@ -150,10 +150,10 @@ function Navbar() {
               )}
             </div>
 
-            <div className="icons flex items-center gap-3 mr-4">
-              <GoSearch />
-              <TbMessage2Question />
-              <GoPerson />
+            <div className="icons flex items-center gap-8 mr-4">
+              <GoSearch size={20}/>
+              <TbMessage2Question size={20}/>
+              <GoPerson size={20}/>
             </div>
           </div>
         </div>
