@@ -27,7 +27,7 @@ function InsightsAndTools() {
   ];
 
   return (
-    <div className='flex flex-col gap-8 my-16 mx-4 2xl:mx-0'>
+    <div className='flex flex-col gap-8 my-12 mx-4 2xl:mx-0'>
       <h1 className="text-4xl lg:text-6xl font-normal sm:font-light my-16">AI insights and tools</h1>
       <ul className="flex flex-col lg:flex-row gap-32 lg:gap-12">
         {types.map((type) => (

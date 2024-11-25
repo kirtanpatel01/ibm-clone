@@ -8,5 +8,6 @@ import Layout from './Layout';
 import CTAButton from './CTAButton';
 import NewsCompo from './NewsCompo';
 import RecommendBox from './RecommendBox';
+import ProductsInterestedCompo from './ProductsInterestedCompo';
 
-export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout, CTAButton, NewsCompo, RecommendBox };
+export { Navbar, Footer, Container, ProductsNav, SolutionsNav, SupportsNav, Layout, CTAButton, NewsCompo, RecommendBox, ProductsInterestedCompo };
