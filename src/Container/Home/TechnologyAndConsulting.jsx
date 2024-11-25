@@ -65,7 +65,7 @@ function TechnologyAndConsulting() {
   };
 
   return (
-    <div className="py-16 mx-4 sm:mx-8 2xl:mx-0">
+    <div className="mb-32 py-16 mx-4 sm:mx-8 2xl:mx-0">
       <h1 className="text-4xl lg:text-6xl font-base sm:font-light w-full 2xl:max-w-96 my-8">
         Technology & Consulting
       </h1>
