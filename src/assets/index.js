@@ -14,6 +14,8 @@ import automation from "./automation.svg";
 import servers from "./servers.svg";
 import db from "./database.svg";
 import security from "./security.svg";
+import learning from './learning.png';
+import jobs from './jobs.png';
 
 export {
   favicon,
@@ -32,4 +34,6 @@ export {
   servers,
   db,
   security,
+  learning,
+  jobs,
 };
