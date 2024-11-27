@@ -23,7 +23,7 @@ function NextSteps() {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 mx-0 sm:mx-8 2xl:mx-0">
+    <div className="grid grid-cols-1 lg:grid-cols-2 mx-0 sm:mx-8 2xl:mx-0 mb-32">
       <h1 className="mx-4 sm:mx-0 text-4xl lg:text-5xl xl:text-6xl sm:font-light">Take the next step</h1>
       <p className="mx-4 sm:mx-0 mt-8 lg:mt-0 mb-20 lg:mb-0 text-2xl sm:text-xl xl:text-2xl">
         Solving the world’s problems through technology wouldn’t be possible

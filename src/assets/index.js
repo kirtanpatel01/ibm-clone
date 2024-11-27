@@ -16,6 +16,7 @@ import db from "./database.svg";
 import security from "./security.svg";
 import learning from './learning.png';
 import jobs from './jobs.png';
+import ibmWhite from './ibmWhite.svg';
 
 export {
   favicon,
@@ -36,4 +37,5 @@ export {
   security,
   learning,
   jobs,
+  ibmWhite,
 };
