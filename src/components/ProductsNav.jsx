@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Container } from "./index";
 import { GoArrowRight } from "react-icons/go";
 import { APIConnect } from "../pages";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
+import { IoChevronDownOutline } from "react-icons/io5";
 
 function ProductsNav({ setDropDownBox }) {
   const leftLinks = [
@@ -70,9 +71,10 @@ function ProductsNav({ setDropDownBox }) {
           heading: "Turbonomic",
           desc: "Software to manage and optimize IT resource usage",
         },
-        { 
-          heading: "watsonx", 
-          desc: "AI and data platform" },
+        {
+          heading: "watsonx",
+          desc: "AI and data platform",
+        },
         {
           heading: "watsonx Assistant",
           desc: "Virtual agents customizable to any domain",
@@ -248,22 +250,24 @@ function ProductsNav({ setDropDownBox }) {
   const [sub, setSub] = useState("");
   const [content, setContent] = useState(leftLinks[0].content);
 
-  console.log(content);
   const handleClick = (title, sub, content) => {
     setSelected(title);
     setSub(sub);
-    setContent(content)
+    setContent(content);
   };
   return (
     <div
       onClick={() => null}
       className="h-fit bg-white flex justify-center text-sm"
     >
-      <div className="max-w-[1440px] w-full grid grid-cols-[.4fr_auto_1fr] lg:grid-cols-[.25fr_auto_1fr] ">
+      {/* for larger screens */}
+      <div className="max-w-[1440px] w-full hidden sm:grid grid-cols-1 sm:grid-cols-[.4fr_auto_1fr] lg:grid-cols-[.25fr_auto_1fr]">
         <ul className="mt-1 ml-1">
           {leftLinks.map((link) => (
             <li
-              onClick={() => handleClick(link.title, link.subTitle, link.content)}
+              onClick={() =>
+                handleClick(link.title, link.subTitle, link.content)
+              }
               className={`px-3 py-1 cursor-pointer hover:bg-neutral-100 ${
                 selected === link.title ? "bg-neutral-200" : "text-neutral-500"
               }`}
@@ -272,32 +276,55 @@ function ProductsNav({ setDropDownBox }) {
             </li>
           ))}
           <div className="w-full h-[1px] bg-gray-200"></div>
-          <Link 
-            to={'/products'}
+          <Link
+            to={"/products"}
             onClick={() => setDropDownBox(null)}
-            className="flex items-center gap-2 text-primary px-4 py-2 hover:bg-neutral-100 cursor-pointer">
+            className="flex items-center gap-2 text-primary px-4 py-2 hover:bg-neutral-100 cursor-pointer"
+          >
             <span>View all products</span>
             <GoArrowRight className="" />
           </Link>
         </ul>
-        <div className="h-full w-[1px] bg-gray-200"></div>
-        <div className="mt-4 ml-6 flex flex-col gap-2 lg:gap-7">
+        <div className="h-full w-[1px] hidden sm:block bg-gray-200"></div>
+        <div className="mt-4 ml-6 hidden sm:flex flex-col gap-2 lg:gap-7">
           <div>
             <h1 className="text-3xl">{selected}</h1>
             <h2 className="text-neutral-700 mt-1">{sub}</h2>
           </div>
           <ul className="grid grid-cols-2 lg:grid-cols-3">
             {content.map((item) => (
-              <Link 
-              onClick={() => setDropDownBox(null)}
-              to={'/products/api-connect'}
-              className='text-neutral-600 flex flex-col w-64 lg:w-72 xl:w-[19rem] hover:bg-neutral-100 cursor-pointer pl-0 p-4 lg:p-4'>
+              <Link
+                onClick={() => setDropDownBox(null)}
+                to={"/products/api-connect"}
+                className="text-neutral-600 flex flex-col w-64 lg:w-72 xl:w-[19rem] hover:bg-neutral-100 cursor-pointer pl-0 p-4 lg:p-4"
+              >
                 <span className="font-semibold">{item.heading}</span>
                 <span className="text-sm">{item.desc}</span>
               </Link>
             ))}
           </ul>
         </div>
+      </div>
+
+      {/* for smaller screens */}
+      <div className="bg-white w-full sm:hidden">
+        <ul>
+          <div className="text-primary flex items-center gap-1 px-4 py-3">
+            <IoChevronDownOutline className="rotate-90 " />
+            <span>Back</span>
+          </div>
+          <div className="w-full flex bg-gray-300 h-[1px]"></div>
+
+          <div className="px-4 py-3 font-semibold">Products</div>
+          <div className="w-full flex bg-gray-300 h-[1px]"></div>
+
+          {leftLinks.map((item) => (
+            <li className="">
+              <div className="mx-4 my-32">{item.title}</div>
+              <div className="w-full flex bg-gray-300 h-[1px]"></div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
