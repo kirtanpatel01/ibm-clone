@@ -1,8 +1,11 @@
 import React from 'react'
+import { UnderMaintenance } from '../components';
 
 function Industries() {
   return (
-    <div>Industries</div>
+    <div>
+      <UnderMaintenance />
+    </div>
   )
 }
 

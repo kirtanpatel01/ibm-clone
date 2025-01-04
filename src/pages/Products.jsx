@@ -1,8 +1,11 @@
 import React from 'react'
+import { UnderMaintenance } from '../components'
 
 function Products() {
   return (
-    <div>Products</div>
+    <div>
+      <UnderMaintenance />
+    </div>
   )
 }
 

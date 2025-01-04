@@ -6,6 +6,7 @@ import CTAButton from "./CTAButton";
 import NewsCompo from "./NewsCompo";
 import RecommendBox from "./RecommendBox";
 import UnderMaintenance from "./UserMaintenance";
+import NavItemMenu from "./NavItemMenu";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   NewsCompo,
   RecommendBox,
   UnderMaintenance,
+  NavItemMenu,
 };
