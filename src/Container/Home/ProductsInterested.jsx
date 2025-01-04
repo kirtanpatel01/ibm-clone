@@ -1,5 +1,4 @@
 import React from "react";
-import { ProductsInterestedCompo } from "../../components";
 import { Link } from "react-router-dom";
 import { GoArrowRight } from "react-icons/go";
 
@@ -28,7 +27,7 @@ function ProductsInterested() {
       <h2 className="text-3xl font mb-8">Products you may be interested in</h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {list.map((item) => (
-          <Link className="flex flex-col border p-4 gap-2 hover:bg-neutral-200">
+          <Link key={item.head} className="flex flex-col border p-4 gap-2 hover:bg-neutral-200">
             <span className="text-xs text-neutral-500">
               {item.head}
             </span>

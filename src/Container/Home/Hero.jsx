@@ -68,6 +68,7 @@ function Hero() {
         <ul className="flex gap-4 px-2">
           {nums.map((i) => (
             <li
+              key={i}
               onClick={() => setSelected(i)}
               onMouseEnter={() => handleMouseEnter(i)}
               onMouseLeave={() => handleMouseLeave()}

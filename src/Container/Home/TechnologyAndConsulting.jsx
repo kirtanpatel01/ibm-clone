@@ -89,6 +89,7 @@ function TechnologyAndConsulting() {
       <ul className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-4 lg:grid-cols-4 lg:grid-rows-2">
         {list.map((item, i) => (
           <Link
+            key={i}
             onMouseEnter={() => handleHover(i)}
             onMouseLeave={() => setVisible(false)}
             className="h-72 sm:h-48 border hover:border-none p-4 flex flex-col justify-between hover:bg-custom-gradient-b hover:text-white"

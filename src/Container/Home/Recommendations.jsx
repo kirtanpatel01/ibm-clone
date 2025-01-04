@@ -31,7 +31,7 @@ function Recommendations() {
       <h2 className="font-semibold my-8">Recommonded for you</h2>
       <ul className="grid sm:grid-cols-2 sm:grid-rows-2 lg:grid-cols-4 lg:grid-rows-1">
         {data.map((item, index) => (
-          <RecommendBox img={item.img} heading={item.heading} desc={item.desc}/>
+          <RecommendBox key={index} img={item.img} heading={item.heading} desc={item.desc}/>
         ))}
       </ul>
     </div>

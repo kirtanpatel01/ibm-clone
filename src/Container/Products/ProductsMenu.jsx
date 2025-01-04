@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Container } from "./index";
 import { GoArrowRight } from "react-icons/go";
-import { APIConnect } from "../pages";
-import { Link, Links } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { IoChevronDownOutline } from "react-icons/io5";
 
-function ProductsNav({ setDropDownBox }) {
+function ProductsMenu({ setDropDownBox }) {
   const leftLinks = [
     {
       title: "Featured",
@@ -231,42 +229,44 @@ function ProductsNav({ setDropDownBox }) {
         },
       ],
     },
-    "Business automation",
-    "Containers",
-    "Databases",
-    "DevOps",
-    "IT automation",
-    "Middleware",
-    "Network",
-    "Operating systems",
-    "Quantum",
-    "Security & identity",
-    "Servers",
-    "Storage",
-    "Supply chain",
   ];
 
-  const [selected, setSelected] = useState("Featured");
+  const [selected, setSelected] = useState(leftLinks[0].title);
   const [sub, setSub] = useState("");
   const [content, setContent] = useState(leftLinks[0].content);
+  const [isSubContentVisible, setIsSubContentVisible] = useState(false);
 
-  const handleClick = (title, sub, content) => {
+  const handleClick = ({ title = "", sub = "", content = [] } = {}) => {
     setSelected(title);
     setSub(sub);
     setContent(content);
+    setIsSubContentVisible((prev) => !prev);
   };
+
+  console.log(isSubContentVisible);
+
+  const handleBackClick = () => {
+    if (isSubContentVisible) {
+      setIsSubContentVisible(false);
+    } else {
+      setDropDownBox(null);
+    }
+  };
+
   return (
-    <div
-      onClick={() => null}
-      className="h-fit bg-white flex justify-center text-sm"
-    >
+    <div className="h-screen sm:h-fit bg-white flex text-sm z-10">
       {/* for larger screens */}
-      <div className="max-w-[1440px] w-full hidden sm:grid grid-cols-1 sm:grid-cols-[.4fr_auto_1fr] lg:grid-cols-[.25fr_auto_1fr]">
+      <div className="main-container hidden sm:grid grid-cols-1 sm:grid-cols-[.4fr_auto_1fr] lg:grid-cols-[.25fr_auto_1fr]">
         <ul className="mt-1 ml-1">
           {leftLinks.map((link) => (
             <li
+              key={link.title}
               onClick={() =>
-                handleClick(link.title, link.subTitle, link.content)
+                handleClick({
+                  title: link.title,
+                  sub: link.subTitle,
+                  content: link.content,
+                })
               }
               className={`px-3 py-1 cursor-pointer hover:bg-neutral-100 ${
                 selected === link.title ? "bg-neutral-200" : "text-neutral-500"
@@ -282,7 +282,7 @@ function ProductsNav({ setDropDownBox }) {
             className="flex items-center gap-2 text-primary px-4 py-2 hover:bg-neutral-100 cursor-pointer"
           >
             <span>View all products</span>
-            <GoArrowRight className="" />
+            <GoArrowRight />
           </Link>
         </ul>
         <div className="h-full w-[1px] hidden sm:block bg-gray-200"></div>
@@ -294,6 +294,7 @@ function ProductsNav({ setDropDownBox }) {
           <ul className="grid grid-cols-2 lg:grid-cols-3">
             {content.map((item) => (
               <Link
+                key={item.heading}
                 onClick={() => setDropDownBox(null)}
                 to={"/products/api-connect"}
                 className="text-neutral-600 flex flex-col w-64 lg:w-72 xl:w-[19rem] hover:bg-neutral-100 cursor-pointer pl-0 p-4 lg:p-4"
@@ -307,21 +308,34 @@ function ProductsNav({ setDropDownBox }) {
       </div>
 
       {/* for smaller screens */}
-      <div className="bg-white w-full sm:hidden">
-        <ul>
-          <div className="text-primary flex items-center gap-1 px-4 py-3">
-            <IoChevronDownOutline className="rotate-90 " />
-            <span>Back</span>
-          </div>
-          <div className="w-full flex bg-gray-300 h-[1px]"></div>
-
-          <div className="px-4 py-3 font-semibold">Products</div>
-          <div className="w-full flex bg-gray-300 h-[1px]"></div>
-
-          {leftLinks.map((item) => (
-            <li className="">
-              <div className="mx-4 my-32">{item.title}</div>
-              <div className="w-full flex bg-gray-300 h-[1px]"></div>
+      <div className="visible sm:hidden w-full h-full">
+        <div
+          onClick={() => handleBackClick()}
+          className="text-blue-600 flex gap-1 p-2 border-2 border-transparent hover:border-2 hover:border-blue-600 w-full cursor-pointer"
+        >
+          <IoChevronDownOutline size={16} className="rotate-90" />
+          <span>Back</span>
+        </div>
+        <ul className={`${isSubContentVisible ? "hidden" : "visible"}`}>
+          <div className="border-b py-2 px-4 font-semibold">Products</div>
+          {leftLinks.map((linkItem) => (
+            <li
+              onClick={() => handleClick({title: linkItem.title, content: linkItem.content })}
+              className="border-b py-3 px-4 cursor-pointer hover:bg-neutral-200"
+              key={linkItem.title}
+            >
+              {linkItem.title}
+            </li>
+          ))}
+        </ul>
+        <ul className={`${isSubContentVisible ? "visible" : "hidden"}`}>
+          <div className="border-b py-2 px-4 font-semibold">{selected}</div>
+          {content.map((subLink) => (
+            <li
+              key={subLink.heading}
+              className="flex flex-col border-b py-3 px-4 cursor-not-allowed"
+            >
+              <span>{subLink.heading}</span>
             </li>
           ))}
         </ul>
@@ -330,4 +344,4 @@ function ProductsNav({ setDropDownBox }) {
   );
 }
 
-export default ProductsNav;
+export default ProductsMenu;

@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Container, ProductsNav, SolutionsNav, SupportsNav } from "./index";
+import {
+  ProductsMenu,
+  ServicesMenu,
+  IndustriesMenu,
+  OfferingMenu,
+} from "../Container";
 import { favicon, hamburger, cross } from "../assets";
 import { Link } from "react-router-dom";
 import { GoPerson, GoSearch, GoChevronDown } from "react-icons/go";
@@ -31,159 +36,116 @@ function Navbar() {
   }, [lastScrollY]);
 
   useEffect(() => {
-    if (dropDownBox) {
-      const scrollBarWidth =
-        window.innerWidth - document.documentElement.clientWidth;
+    if (dropDownBox || navVisible) {
       document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollBarWidth}px`;
     } else {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     }
 
     return () => {
       document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
     };
-  }, [dropDownBox]);
+  }, [dropDownBox, navVisible]);
 
   const links = [
     {
       title: "Products",
       path: "/products",
-      dropDown: <ProductsNav setDropDownBox={setDropDownBox} />,
+      dropDown: <ProductsMenu setDropDownBox={setDropDownBox} />,
       down: true,
     },
     {
-      title: "Solutions",
-      path: "/solutoins",
-      dropDown: <SolutionsNav />,
+      title: "Services",
+      path: "/services",
+      dropDown: <ServicesMenu setDropDownBox={setDropDownBox} />,
       down: true,
     },
     {
-      title: "Consulting",
-      path: "/consulting",
-      dropDown: null,
-      down: false,
-    },
-    {
-      title: "Support",
-      path: "/support",
-      dropDown: <SupportsNav />,
+      title: "Industries",
+      path: "/industries",
+      dropDown: <IndustriesMenu setDropDownBox={setDropDownBox} />,
       down: true,
     },
     {
-      title: "Think",
-      path: "/think",
-      dropDown: null,
-      down: false,
+      title: "Offering",
+      path: "/offering",
+      dropDown: <OfferingMenu setDropDownBox={setDropDownBox} />,
+      down: true,
     },
   ];
 
-  console.log("drop", dropDownBox)
-  console.log("nav", navVisible)
+  const handleToggle = () => {
+    setNavVisible((prev) => !prev);
+    if(navVisible) {
+      setDropDownBox(null)
+    }
+  }
 
+  const handleNavItemClick = (navItem) => {
+    setDropDownBox((prev) => {
+      if (prev) {
+        const currentElementName =
+          prev?.type?.name?.split("M")[0];
+        if (currentElementName === navItem.title) {
+          return null;
+        }
+      }
+      return navItem.dropDown;
+    })
+  }
   return (
     <div
-      className={`fixed bg-white w-full transition-transform duration-100 ${
+      className={`fixed w-full ${dropDownBox? "h-screen" : 'h-fit'} grid grid-rows-[auto_auto_auto_1fr] transform transform-translate duration-300 ${
         showNavbar ? "translate-y-0" : "-translate-y-full"
       }`}
     >
-      <div className="grid grid-cols-[1fr_auto] ">
-        <div className="max-w-[1440px] w-full mx-auto">
-          <div className="w-full flex justify-between">
-            <div className="flex items-center">
-              {/* Hamburger toggle with cross */}
-              <img
-                onClick={() => {
-                  setNavVisible((pre) => !pre);
-                  setDropDownBox(null)
-                }}
-                src={navVisible ? cross : hamburger}
-                alt="hamburger"
-                className="block md:hidden h-7 px-2 cursor-pointer"
-              />
-              
-              {/* Logo Image */}
-              <img
-                src={favicon}
-                alt="ibm-icon"
-                className="h-11 p-2 hover:bg-grayHover"
-              />
+      <div className="bg-white flex items-center justify-between main-container">
+        <div className="flex items-center">
+          <img
+            src={navVisible ? cross : hamburger}
+            alt="hamburger"
+            className={`h-10 block sm:hidden cursor-pointer p-2 hover:bg-neutral-200`}
+            onClick={() => handleToggle()}
+          />
+          <img src={favicon} alt="logo" className="h-7 mx-2" />
 
-              <div className="hidden md:block h-6 w-[1px] mx-[1px] bg-gray-300"></div>
-              {/* For lager screens than 628px width */}
-              <ul className="ml-3 hidden md:flex items-center">
-                {links.map((link) => (
-                  <Link
-                    key={link.title}
-                    onClick={() =>
-                      link.dropDown ? setDropDownBox(link.dropDown) : null
-                    }
-                    className="px-3 py-2 flex items-center gap-2 hover:bg-neutral-200 cursor-pointer"
-                  >
-                    <span>{link.title}</span>
-                    {link.down ? <GoChevronDown /> : null}
-                  </Link>
-                ))}
-              </ul>
+          <div className="w-[1px] h-7 bg-slate-300 hidden sm:block mx-2"></div>
 
-              {/* When the device is smaller than 630px this will appear  */}
-                <ul className={`w-full absolute top-[45px] bg-white ${navVisible ? 'flex' : 'hidden'} flex-col`}>
-                  {links.map((link) => (
-                    <Link>
-                      <div
-                        key={link.title}
-                        onClick={() =>
-                          link.dropDown ? setDropDownBox(link.dropDown) : null
-                        }
-                        className="px-3 py-2 flex justify-between items-center gap-2 hover:bg-neutral-200 cursor-pointer bg-white"
-                      >
-                        <span>{link.title}</span>
-                        <div className="-rotate-90">
-                          {link.down ? <GoChevronDown /> : null}
-                        </div>
-                      </div>
-                      <div className="w-full flex bg-gray-300 h-[1px]"></div>
-                    </Link>
-                  ))}
-                </ul>
-            </div>
-
-            {/* Icons at the end of the Navbar */}
-            <div className="icons flex items-center gap-8 mr-4">
-              <GoSearch size={20} />
-              <TbMessage2Question size={20} />
-              <GoPerson size={20} />
-            </div>
-          </div>
+          <ul
+            className={`w-full bg-white ${
+              navVisible
+                ? "flex flex-col min-h-screen absolute top-11 sm:top-12"
+                : "hidden sm:flex"
+            }`}
+          >
+            {links.map((navItem) => (
+              <li
+                key={navItem.title}
+                onClick={() => handleNavItemClick(navItem)}
+                className="flex items-center gap-1 cursor-pointer hover:bg-neutral-200 px-3.5 py-2.5 border-b sm:border-0"
+              >
+                <span>{navItem.title}</span>
+                <GoChevronDown size={16} />
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {/* A small verical thick line which avoids the navbar shifting when the someone click on the elements of the navbar and the drop down box will appear, why this b'coz at that time the virtical scroll bar will get out and it will create a shift  */}
-        <div
-          className={`hidden sm:block bg-gray-500 h-full w-[17px] ${
-            dropDownBox ? "block" : "hidden"
-          }`}
-        ></div>
+        <div className="flex gap-4">
+          <GoPerson size={20} />
+          <GoSearch size={20} />
+          <TbMessage2Question size={20} />
+        </div>
       </div>
 
-      {/* Line below the navbar */}
-      <div className="w-full flex bg-gray-300 h-[1px]"></div>
+      <div className='w-full h-[1px] bg-neutral-200'></div>
 
-      {/* the frop down box, here the it contains the different types of products list, solutions list, etc. */}
-      {dropDownBox && (
-        <div className={`w-full h-[calc(100vh-2.75rem)] mt-1 bg-black bg-opacity-30 absolute top-11 hidden sm:block`}>
-          <div className="shadow-xl">{dropDownBox}</div>
-          <div className="h-full" onClick={() => setDropDownBox(null)}></div>
-        </div>
-      )}
-      
-      {dropDownBox && (
-        <div className={`w-full h-[calc(100vh-2.75rem)] mt-1 bg-black bg-opacity-30 absolute top-11 ${navVisible ? '' : 'hidden'} sm:hidden`}>
-          <div className="shadow-xl">{dropDownBox}</div>
-          <div className="h-full" onClick={() => setDropDownBox(null)}></div>
-        </div>
-      )}
+      {dropDownBox}
+
+      <div
+        onClick={() => setDropDownBox(null)}
+        className="h-full bg-black opacity-40"
+      ></div>
     </div>
   );
 }

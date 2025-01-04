@@ -74,8 +74,8 @@ function Footer() {
   const [preIndex, setPreIndex] = useState(-1);
 
   const handleClick = (index) => {
-    console.log(`Pre: ${preIndex} & current: ${index}`)
-    setDropDown(preIndex===index ? false : true);
+    console.log(`Pre: ${preIndex} & current: ${index}`);
+    setDropDown(preIndex === index ? false : true);
     setIndex(index);
     setPreIndex(index);
   };
@@ -95,14 +95,17 @@ function Footer() {
           <div className="flex">
             <div className="w-0 lg:w-96"></div>
             <div className="w-full flex flex-col gap-0 sm:gap-4">
+              
               <div className="w-full h-[1px] bg-neutral-600"></div>
+
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:mx-4">
                 {links.map((item, i) => (
                   <li
+                    key={i}
                     onClick={() => handleClick(i)}
                     className={`flex flex-col justify-between gap-2 sm:mb-10 order-${item.order} border-b-[1px] border-neutral-600 py-3 px-2 sm:px-0 sm:border-none sm:py-0`}
                   >
-                    <div className='w-full flex justify-between'>
+                    <div className="w-full flex justify-between">
                       <span className="sm:font-semibold">{item.head}</span>
                       <IoChevronDownOutline
                         className={`sm:hidden ${
@@ -117,7 +120,12 @@ function Footer() {
                         }`}
                       >
                         {item.list.map((link) => (
-                          <Link className="hover:underline py-2 sm:py-0">{link}</Link>
+                          <Link
+                            key={link}
+                            className="hover:underline py-2 sm:py-0"
+                          >
+                            {link}
+                          </Link>
                         ))}
                       </ul>
                     )}
@@ -126,9 +134,12 @@ function Footer() {
               </ul>
 
               <div className="hidden sm:block w-full h-[1px] bg-neutral-600"></div>
+
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-neutral-300 gap-4 sm:gap-2 mx-2 sm:mx-4 mt-8 sm:mt-0">
                 {extra.map((link) => (
-                  <Link className=" hover:underline">{link}</Link>
+                  <Link key={link} className=" hover:underline">
+                    {link}
+                  </Link>
                 ))}
               </ul>
             </div>
@@ -140,4 +151,3 @@ function Footer() {
 }
 
 export default Footer;
-

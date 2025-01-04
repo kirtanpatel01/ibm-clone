@@ -5,5 +5,21 @@ import NextSteps from "./Home/NextSteps";
 import ProductsInterested from "./Home/ProductsInterested";
 import Recommendations from "./Home/Recommendations";
 import TechnologyAndConsulting from "./Home/TechnologyAndConsulting";
+import IndustriesMenu from "./Industries/IndustriesMenu";
+import OfferingMenu from "./Offering/OfferingMenu";
+import ProductsMenu from "./Products/ProductsMenu";
+import ServicesMenu from "./Services/ServicesMenu";
 
-export { Hero, Recommendations, InsightsAndTools, ProductsInterested, TechnologyAndConsulting, Inside, NextSteps };
+export {
+  Hero,
+  Recommendations,
+  InsightsAndTools,
+  ProductsInterested,
+  TechnologyAndConsulting,
+  Inside,
+  NextSteps,
+  ProductsMenu,
+  ServicesMenu,
+  IndustriesMenu,
+  OfferingMenu,
+};

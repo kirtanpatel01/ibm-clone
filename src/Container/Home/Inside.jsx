@@ -37,7 +37,7 @@ function Inside() {
         <h1 className="text-4xl lg:text-5xl xl:text-6xl font-base sm:font-light min-w-72 xl:min-w-80">Inside IBM</h1>
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-16">
           {sections.map((item) => (
-            <li className="flex flex-col gap-8">
+            <li key={item.title} className="flex flex-col gap-8">
               <div>
                 <h3 className="font-semibold">{item.title}</h3>
                 <p className="max-w-80">{item.desc}</p>
@@ -45,7 +45,7 @@ function Inside() {
               {item.links && (
                 <ul className="flex flex-col gap-2">
                   {item.links.map((link) => (
-                    <Link className="flex gap-2 text-primary">
+                    <Link key={link.text} className="flex gap-2 text-primary">
                       <span className="hover:underline underline-offset-4">
                         {link.text}
                       </span>
