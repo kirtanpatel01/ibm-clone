@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Home, Products, Industries, Offering, Services }from './pages';
+import { Home, Products, Industries, Offering, Services, BlogPage }from './pages';
 import { UnderMaintenance } from './components'
 
 const router = createBrowserRouter([
@@ -34,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: '/under-maintenance',
         element: <UnderMaintenance />,
+      },
+      {
+        path: 'blogs',
+        element: <BlogPage />
       },
     ]
   }
