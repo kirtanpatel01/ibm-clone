@@ -1,3 +1,6 @@
+import HeroBlogs from "./Blogs/HeroBlogs";
+import OtherBlogs from "./Blogs/OtherBlogs";
+import SpotliteBlogs from "./Blogs/SpotliteBlogs";
 import Hero from "./Home/Hero";
 import Inside from "./Home/Inside";
 import InsightsAndTools from "./Home/InsightsAndTools";
@@ -22,4 +25,7 @@ export {
   ServicesMenu,
   IndustriesMenu,
   OfferingMenu,
+  OtherBlogs,
+  SpotliteBlogs,
+  HeroBlogs,
 };
