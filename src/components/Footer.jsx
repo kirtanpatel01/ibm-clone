@@ -9,65 +9,70 @@ function Footer() {
     {
       head: "Discover",
       list: [
-        "Products",
-        "Trials",
-        "Services",
-        "Industries",
-        "Case studies",
-        "Financing",
+        { path: 'products', heading: 'Products' },
+        { path: 'trials', heading: 'Trials' },
+        { path: 'services', heading: 'Services' },
+        { path: 'industries', heading: 'Industries' },
+        { path: 'case-studies', heading: 'Case studies' },
+        { path: 'financing', heading: 'Financing' }
       ],
       order: 1,
     },
     {
       head: "Connect with us",
       list: [
-        "Engage IBM Consulting",
-        "Support",
-        "Find a partner",
-        "Developers",
-        "Business Partners",
+        { path: 'engage-ibm-consulting', heading: 'Engage IBM Consulting' },
+        { path: 'support', heading: 'Support' },
+        { path: 'find-a-partner', heading: 'Find a partner' },
+        { path: 'developers', heading: 'Developers' },
+        { path: 'business-partners', heading: 'Business Partners' }
       ],
       order: 2,
     },
     {
       head: "Follow IBM",
-      list: ["LinkedIn", "X", "Instagram", "Subscription Center"],
+      list: [
+        { path: 'https://www.linkedin.com/company/arkalnfotech/', heading: 'LinkedIn' },
+        { path: 'https://x.com/_arkainfotech', heading: 'X' },
+        { path: 'https://www.instagram.com/arkainfotech/', heading: 'Instagram' },
+      ],
       order: 5,
     },
     {
       head: "Learn about",
       list: [
-        "Artificial intelligence",
-        "Machine learning",
-        "Generative AI",
-        "Responsible AI",
-        "Cybersecurity",
-        "Business analytics",
-        "Quantum computing",
+        { path: 'artificial-intelligence', heading: 'Artificial intelligence' },
+        { path: 'machine-learning', heading: 'Machine learning' },
+        { path: 'generative-ai', heading: 'Generative AI' },
+        { path: 'responsible-ai', heading: 'Responsible AI' },
+        { path: 'cybersecurity', heading: 'Cybersecurity' },
+        { path: 'business-analytics', heading: 'Business analytics' },
+        { path: 'quantum-computing', heading: 'Quantum computing' }
       ],
       order: 3,
     },
     {
       head: "About IBM",
       list: [
-        "Careers",
-        "Newsroom",
-        "What’s new",
-        "Investor relations",
-        "Corporate responsibility",
-        "About IBM",
+        { path: 'careers', heading: 'Careers' },
+        { path: 'newsroom', heading: 'Newsroom' },
+        { path: 'what’s-new', heading: 'What’s new' },
+        { path: 'investor-relations', heading: 'Investor relations' },
+        { path: 'corporate-responsibility', heading: 'Corporate responsibility' },
+        { path: 'about-ibm', heading: 'About IBM' }
       ],
       order: 4,
     },
   ];
 
   const extra = [
-    "Contact",
-    "Terms of use",
-    "Cookie Preferences",
-    "Privacy",
-    "Accessibility",
-  ];
+    { path: 'contact', heading: 'Contact' },
+    { path: 'terms', heading: 'Terms' },
+    { path: 'ethics', heading: 'Ethics' },
+    { path: 'privacy', heading: 'Privacy' },
+    { path: 'accessibility', heading: 'Accessibility' }
+  ]
+  
 
   const [dropDown, setDropDown] = useState(false);
   const [index, setIndex] = useState(-1);
@@ -98,12 +103,12 @@ function Footer() {
               
               <div className="w-full h-[1px] bg-neutral-600"></div>
 
-              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 sm:mx-4">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  sm:mx-4">
                 {links.map((item, i) => (
                   <li
                     key={i}
                     onClick={() => handleClick(i)}
-                    className={`flex flex-col justify-between gap-2 sm:mb-10 order-${item.order} border-b-[1px] border-neutral-600 py-3 px-2 sm:px-0 sm:border-none sm:py-0`}
+                    className={`h-fit flex flex-col justify-between gap-2 sm:mb-10 order-${item.order} border-b-[1px] border-neutral-600 py-3 px-2 sm:px-0 sm:border-none sm:py-0`}
                   >
                     <div className="w-full flex justify-between">
                       <span className="sm:font-semibold">{item.head}</span>
@@ -121,10 +126,11 @@ function Footer() {
                       >
                         {item.list.map((link) => (
                           <Link
-                            key={link}
+                          to={link.path}
+                            key={link.heading}
                             className="hover:underline py-2 sm:py-0"
                           >
-                            {link}
+                            {link.heading}
                           </Link>
                         ))}
                       </ul>
@@ -137,8 +143,10 @@ function Footer() {
 
               <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-neutral-300 gap-4 sm:gap-2 mx-2 sm:mx-4 mt-8 sm:mt-0">
                 {extra.map((link) => (
-                  <Link key={link} className=" hover:underline">
-                    {link}
+                  <Link
+                  to={link.path}
+                  key={link.heading} className=" hover:underline">
+                    {link.heading}
                   </Link>
                 ))}
               </ul>
