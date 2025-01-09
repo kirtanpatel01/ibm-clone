@@ -10,6 +10,8 @@ export default {
       },
       colors: {
         grayHover: "#e5e5e5",
+        arka: "#1e5eed",
+        arkaDark: '#1358ec',
         primary: "#0f62fe",
         primaryHvr: "#0050e6",
         customGreen: "#0AFFD3",
@@ -19,20 +21,6 @@ export default {
           "linear-gradient(to right, #0f62fe, #2dd4bf, #0d9488, #115e59)",
         "custom-gradient-b":
           "linear-gradient(to bottom,#0b66f9, #0078e9, #0083d9, #008bd3, #0093d0, #009ace, #00a1cd, #00a9cb, #00b1c8, #0cb7c0)",
-      },
-      keyframes: {
-        fadeDown: {
-          "0%": { opacity: "0", transform: "translateY(-20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeUp: {
-          "0%": { opacity: "1", transform: "translateY(0)" },
-          "100%": { opacity: "0", transform: "translateY(-20px)" },
-        },
-      },
-      animation: {
-        fadeDown: "fadeDown 0.3s ease-in-out",
-        fadeUp: "fadeUp 0.3s ease-in-out",
       },
     },
   },

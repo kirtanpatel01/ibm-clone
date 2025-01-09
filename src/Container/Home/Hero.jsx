@@ -72,12 +72,12 @@ function Hero() {
               onClick={() => setSelected(i)}
               onMouseEnter={() => handleMouseEnter(i)}
               onMouseLeave={() => handleMouseLeave()}
-              className="text-primaryHvr text-center text-xs font-semibold cursor-pointer hover:"
+              className="text-arkaDark text-center text-xs font-semibold cursor-pointer hover:"
             >
               <span>{i}</span>
               <div
-                className={`w-4 h-1 ${selected === i ? "bg-primary" : ""} ${
-                  underline ? (index === i ? "bg-primary" : "") : ""
+                className={`w-4 h-1 ${selected === i ? "bg-arka" : ""} ${
+                  underline ? (index === i ? "bg-arka" : "") : ""
                 } rounded`}
               ></div>
             </li>

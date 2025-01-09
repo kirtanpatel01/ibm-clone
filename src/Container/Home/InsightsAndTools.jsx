@@ -32,12 +32,12 @@ function InsightsAndTools() {
       <ul className="flex flex-col lg:flex-row gap-32 lg:gap-12">
         {types.map((type) => (
           <li key={type.head} className="flex flex-col gap-8">
-            <h1 className="text-3xl lg:text-4xl bg-clip-text text-transparent bg-custom-gradient">{type.head}</h1>
+            <h1 className="text-3xl lg:text-4xl text-arka">{type.head}</h1>
             <p>{type.desc}</p>
             {type.list && (
               <ul className="flex flex-col gap-3 lg:gap-4">
                 {type.list.map((item) => (
-                  <Link key={item} className="text-primary flex gap-4">
+                  <Link key={item} className="text-arka flex gap-4">
                     <span>{item}</span>
                     <GoArrowRight size={22}/>
                   </Link>
