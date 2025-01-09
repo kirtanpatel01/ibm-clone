@@ -6,15 +6,13 @@ import { OtherBlogs, SpotliteBlogs, HeroBlogs } from '../Container'
 const BlogPage = () => {
   return (
     <div>
-      <HeroBlogs />
+      {/* <HeroBlogs />
 
-      {/* line */}
       <div className="w-full h-[1px] bg-slate-300"></div>
 
       <SpotliteBlogs /> 
 
-      {/* line */}
-      <div className="w-full h-[1px] bg-slate-300"></div>
+      <div className="w-full h-[1px] bg-slate-300"></div> */}
 
       <OtherBlogs />
     </div>

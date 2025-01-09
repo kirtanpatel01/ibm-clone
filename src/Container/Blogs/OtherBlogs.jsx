@@ -121,10 +121,10 @@ function OtherBlogs() {
                 <span className="text-neutral-500 font-medium">
                   {convertInDDMMYYYY(blog.node?.publishedAt)}
                 </span>
-                |
+                {/* |
                 <span className="text-blue-600">
                   {returnTopic(blog.node?.slug)}
-                </span>
+                </span> */}
               </div>
               <span className="font-medium">{blog.node?.title}</span>
               <a 
