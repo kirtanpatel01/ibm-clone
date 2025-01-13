@@ -5,7 +5,7 @@ import {
   IndustriesMenu,
   OfferingMenu,
 } from "../Container";
-import { favicon, hamburger, cross } from "../assets";
+import { ait_logo, hamburger, cross } from "../assets";
 import { Link } from "react-router-dom";
 import { GoPerson, GoSearch, GoChevronDown } from "react-icons/go";
 import { TbMessage2Question } from "react-icons/tb";
@@ -107,7 +107,7 @@ function Navbar() {
             className={`h-10 block sm:hidden cursor-pointer p-2 hover:bg-neutral-200`}
             onClick={() => handleToggle()}
           />
-          <img src={favicon} alt="logo" className="h-7 mx-2" />
+          <img src={ait_logo} alt="logo" className="h-7 mx-2" />
 
           <div className="w-[1px] h-7 bg-slate-300 hidden sm:block mx-2"></div>
 
@@ -122,7 +122,7 @@ function Navbar() {
               <li
                 key={navItem.title}
                 onClick={() => handleNavItemClick(navItem)}
-                className="flex items-center gap-1 cursor-pointer hover:bg-neutral-200 px-3.5 py-2.5 border-b sm:border-0"
+                className="flex items-center gap-1 cursor-pointer hover:bg-neutral-200 px-3.5 py-1.5 border-b sm:border-0"
               >
                 <span>{navItem.title}</span>
                 <GoChevronDown size={16} />

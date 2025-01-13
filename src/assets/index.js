@@ -17,6 +17,8 @@ import security from "./security.svg";
 import learning from './learning.png';
 import jobs from './jobs.png';
 import ibmWhite from './ibmWhite.svg';
+import ait_logo from './ait_logo.svg';
+import ait_logo_footer from './ait_logo_footer.svg';
 
 export {
   favicon,
@@ -38,4 +40,6 @@ export {
   learning,
   jobs,
   ibmWhite,
+  ait_logo,
+  ait_logo_footer,
 };

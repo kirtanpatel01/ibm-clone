@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Container from "./Container";
-import { ibmWhite } from "../assets";
+import { ait_logo_footer } from "../assets";
 import { IoEarthSharp, IoChevronDownOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
@@ -90,7 +90,7 @@ function Footer() {
       <Container>
         <div className="w-full flex flex-col gap-16 mx-4 2xl:mx-0">
           <div className="w-full flex flex-col sm:flex-row items-start justify-between gap-16 sm:gap-0">
-            <img src={ibmWhite} alt="IBM Logo" className="h-14 " />
+            <img src={ait_logo_footer} alt="IBM Logo" className="h-14 " />
             <div className="h-fit text-white border border-white cursor-pointer flex p-3 items-center justify-between w-full sm:w-96 hover:bg-white hover:text-black">
               <span>India - English</span>
               <IoEarthSharp size={16} />
