@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { db } from "../../firebase.config.js";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -33,7 +33,11 @@ function Contact() {
       //     const snapshot = await uploadBytes(storageRef, formData.resume);
       //     resumeURL = await getDownloadURL(snapshot.ref);
       //   }
-      await addDoc(collection(db, "contacts"), {
+
+      const timestamp = Date.now();
+      const docId = `${formData.fullName}-${timestamp}`;
+
+      await setDoc(doc(db, "contacts", docId), {
         fullName: formData.fullName,
         email: formData.email,
         phone: formData.phone,
